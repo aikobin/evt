@@ -1,6 +1,6 @@
 #pragma once
 #include <fc/variant.hpp>
-#include <fc/container/small_vector_fwd.hpp>
+#include <fc/container/small_fwd.hpp>
 
 namespace fc {
 class mutable_variant_object;

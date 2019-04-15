@@ -48,12 +48,16 @@ public:
 
     action&
     add_generated_action(action&& act) {
-        return _generated_actions.emplace_back(std::move(act));
+        // TODO: Simplify when using LLVM-8
+        _generated_actions.emplace_back(std::move(act));
+        return _generated_actions.back();
     }
 
     ft_holder&
     add_new_ft_holder(ft_holder&& nfth) {
-        return _new_ft_holders.emplace_back(std::move(nfth));
+        // TODO: Simplify when using LLVM-8
+        _new_ft_holders.emplace_back(std::move(nfth));
+        return _new_ft_holders.back();
     }
 
 public:

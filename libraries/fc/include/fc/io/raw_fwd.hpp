@@ -13,7 +13,7 @@
 
 #include <fc/container/deque_fwd.hpp>
 #include <fc/container/flat_fwd.hpp>
-#include <fc/container/small_vector_fwd.hpp>
+#include <fc/container/small_fwd.hpp>
 #include <fc/io/varint.hpp>
 
 namespace google {

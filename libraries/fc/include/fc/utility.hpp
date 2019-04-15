@@ -5,7 +5,7 @@
 #include <vector>
 #include <type_traits>
 #include <tuple>
-#include <fc/container/small_vector_fwd.hpp>
+#include <fc/container/small_fwd.hpp>
 
 #ifdef _MSC_VER
 #pragma warning(disable: 4482) // nonstandard extension used enum Name::Val, standard in C++11

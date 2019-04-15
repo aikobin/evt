@@ -118,7 +118,7 @@ variant_snapshot_reader::get_section_size(const string& section_name) {
 bool
 variant_snapshot_reader::read_row(detail::abstract_snapshot_row_reader& row_reader) {
     const auto& rows = (*cur_section)["rows"].get_array();
-    row_reader.provide(rows.at(cur_row++));
+    row_reader.provide(rows[cur_row++]);
     return cur_row < rows.size();
 }
 

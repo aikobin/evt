@@ -19,7 +19,7 @@
 #include <fc/string.hpp>
 #include <fc/container/flat_fwd.hpp>
 #include <fc/container/deque_fwd.hpp>
-#include <fc/container/small_vector_fwd.hpp>
+#include <fc/container/small_fwd.hpp>
 
 namespace fc {
 /**
@@ -549,7 +549,7 @@ from_variant(const variant& var, std::array<T, S>& t) -> std::enable_if_t<!std::
     const variants& vars = var.get_array();
     if(vars.size() > MAX_NUM_ARRAY_ELEMENTS) throw std::range_error("too large");
     for(std::size_t i = 0; i < S; ++i) {
-        t[i] = vars.at(i).as<T>();
+        t[i] = vars[i].as<T>();
     }
 }
 

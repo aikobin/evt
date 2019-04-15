@@ -606,8 +606,8 @@ calculate_passive_bonus(token_database_cache& tokendb_cache,
 
     auto method = passive_method_type::within_amount;
 
-    auto it = std::find_if(pbs->methods.cbegin(), pbs->methods.cend(), [act](auto& m) { return m.action == act; });
-    if(it != pbs->methods.cend()) {
+    auto it = std::find_if(pbs->methods.begin(), pbs->methods.end(), [act](auto& m) { return m.action == act; });
+    if(it != pbs->methods.end()) {
         method = (passive_method_type)it->method;
     }
 
@@ -1039,7 +1039,7 @@ auto check_involved_creator = [](const auto& target, const auto& key) {
 template<typename T>
 bool
 check_duplicate_meta(const T& v, const meta_key& key) {
-    if(std::find_if(v.metas.cbegin(), v.metas.cend(), [&](const auto& meta) { return meta.key == key; }) != v.metas.cend()) {
+    if(std::find_if(v.metas.begin(), v.metas.end(), [&](const auto& meta) { return meta.key == key; }) != v.metas.end()) {
         return true;
     }
     return false;
@@ -1048,7 +1048,7 @@ check_duplicate_meta(const T& v, const meta_key& key) {
 template<>
 bool
 check_duplicate_meta<group_def>(const group_def& v, const meta_key& key) {
-    if(std::find_if(v.metas_.cbegin(), v.metas_.cend(), [&](const auto& meta) { return meta.key == key; }) != v.metas_.cend()) {
+    if(std::find_if(v.metas_.begin(), v.metas_.end(), [&](const auto& meta) { return meta.key == key; }) != v.metas_.end()) {
         return true;
     }
     return false;  
@@ -1223,13 +1223,13 @@ EVT_ACTION_IMPL_BEGIN(aprvsuspend) {
         EVT_ASSERT(signed_keys == required_keys, suspend_not_required_keys_exception,
             "Provided keys are not required in this suspend transaction");
        
-        for(auto it = signed_keys.cbegin(); it != signed_keys.cend(); it++) {
+        for(auto it = signed_keys.begin(); it != signed_keys.end(); it++) {
             EVT_ASSERT(suspend->signed_keys.find(*it) == suspend->signed_keys.end(), suspend_duplicate_key_exception,
                 "Public key ${key} is already signed this suspend transaction", ("key",*it)); 
         }
 
         suspend->signed_keys.merge(signed_keys);
-        suspend->signatures.insert(suspend->signatures.cend(), aeact.signatures.cbegin(), aeact.signatures.cend());
+        suspend->signatures.insert(suspend->signatures.end(), aeact.signatures.begin(), aeact.signatures.end());
         
         UPD_DB_TOKEN(token_type::suspend, *suspend);
     }
@@ -1807,7 +1807,7 @@ EVT_ACTION_IMPL_BEGIN(aprvlock) {
                 "Type of approve data is not conditional key");
             auto& lck = lock->condition.template get<lock_condkeys>();
 
-            EVT_ASSERT(std::find(lck.cond_keys.cbegin(), lck.cond_keys.cend(), alact.approver) != lck.cond_keys.cend(),
+            EVT_ASSERT(std::find(lck.cond_keys.begin(), lck.cond_keys.end(), alact.approver) != lck.cond_keys.end(),
                 lock_aprv_data_exception, "Approver is not valid");
             EVT_ASSERT(lock->signed_keys.find(alact.approver) == lock->signed_keys.cend(), lock_duplicate_key_exception,
                 "Approver is already signed this lock assets proposal");

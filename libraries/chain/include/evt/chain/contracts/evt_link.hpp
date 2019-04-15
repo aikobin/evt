@@ -49,8 +49,8 @@ public:
     };
 
 public:
-    using segments_type   = fc::flat_map<uint8_t, segment, std::less<uint8_t>, fc::small_vector<std::pair<uint8_t, segment>, 6>>;
-    using signatures_type = fc::flat_set<signature_type, std::less<signature_type>, fc::small_vector<signature_type, 2>>;
+    using segments_type   = fc::small_vector<std::pair<uint8_t, segment>, 6>;
+    using signatures_type = fc::small_vector<signature_type, 3>;
 
 public:
     static evt_link parse_from_evtli(const std::string& str);

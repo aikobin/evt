@@ -5,7 +5,7 @@
 #include <boost/exception/all.hpp>
 #include <fc/log/logger.hpp>
 #include <fc/io/json.hpp>
-#include <fc/container/small_vector.hpp>
+#include <fc/container/small.hpp>
 
 namespace fc {
 

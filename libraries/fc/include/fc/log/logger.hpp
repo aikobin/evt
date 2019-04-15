@@ -3,7 +3,7 @@
 #include <fc/string.hpp>
 #include <fc/time.hpp>
 #include <fc/log/log_message.hpp>
-#include <fc/container/small_vector_fwd.hpp>
+#include <fc/container/small_fwd.hpp>
 
 namespace fc {
 

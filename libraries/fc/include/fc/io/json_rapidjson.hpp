@@ -7,7 +7,7 @@
 #include <vector>
 #include <tuple>
 #include <fc/io/json.hpp>
-#include <fc/container/small_vector_fwd.hpp>
+#include <fc/container/small_fwd.hpp>
 #include <fc/static_variant.hpp>
 #include <rapidjson/document.h>
 #include <rapidjson/reader.h>

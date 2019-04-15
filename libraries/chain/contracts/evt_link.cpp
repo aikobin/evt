@@ -359,12 +359,12 @@ evt_link::remove_segment(uint8_t key) {
 
 void
 evt_link::add_signature(const signature_type& sig) {
-    signatures_.emplace(sig);
+    signatures_.emplace_back(sig);
 }
 
 void
 evt_link::sign(const private_key_type& pkey) {
-    signatures_.emplace(pkey.sign(digest()));
+    signatures_.emplace_back(pkey.sign(digest()));
 }
 
 }}}  // namespac evt::chain::contracts

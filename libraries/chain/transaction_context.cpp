@@ -97,12 +97,16 @@ transaction_context::exec() {
     EVT_ASSERT(is_initialized, transaction_exception, "must first initialize");
 
     for(auto& act : trx.actions) {
-        auto& at = trace->action_traces.emplace_back();
+        // TODO: Simplify when using LLVM-8
+        trace->action_traces.emplace_back();
+        auto& at = trace->action_traces.back();
         dispatch_action(at, act);
 
         if(!at.generated_actions.empty()) {
             for(auto& gact : at.generated_actions) {
-                auto& gat = trace->action_traces.emplace_back();
+                // TODO: Simplify when using LLVM-8
+                trace->action_traces.emplace_back();
+                auto& gat = trace->action_traces.back();
                 dispatch_action(gat, gact);
                 assert(gat.generated_actions.empty());
             }
@@ -258,7 +262,9 @@ transaction_context::finalize_pay() {
     }
     }  // switch
 
-    auto& at = trace->action_traces.emplace_back();
+    // TODO: Simplify when using LLVM-8
+    trace->action_traces.emplace_back();
+    auto& at = trace->action_traces.back();
 
     act.set_index(exec_ctx.index_of<contracts::paycharge>());
     dispatch_action(at, act);

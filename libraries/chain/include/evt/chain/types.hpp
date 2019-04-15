@@ -19,7 +19,7 @@
 #include <fc/string.hpp>
 #include <fc/variant_wrapper.hpp>
 #include <fc/container/flat.hpp>
-#include <fc/container/small_vector.hpp>
+#include <fc/container/small.hpp>
 #include <fc/interprocess/container.hpp>
 #include <fc/crypto/private_key.hpp>
 #include <fc/crypto/ripemd160.hpp>
@@ -94,7 +94,7 @@ using fc::ecc::range_proof_info;
 using fc::ecc::range_proof_type;
 
 using public_key_type      = fc::crypto::public_key;
-using public_keys_set      = fc::flat_set<public_key_type, std::less<public_key_type>, fc::small_vector<public_key_type, 4>>;
+using public_keys_set      = fc::flat_set<public_key_type>;
 using private_key_type     = fc::crypto::private_key;
 using signature_type       = fc::crypto::signature;
 using signatures_type      = fc::small_vector<signature_type, 4>;

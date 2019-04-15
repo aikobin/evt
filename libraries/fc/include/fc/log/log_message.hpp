@@ -10,7 +10,7 @@
 #include <fmt/ostream.h>
 #include <fc/time.hpp>
 #include <fc/variant_object.hpp>
-#include <fc/container/small_vector_fwd.hpp>
+#include <fc/container/small_fwd.hpp>
 
 namespace fc {
 

@@ -975,7 +975,7 @@ token_database_impl::squash() {
     auto rt2 = GETPOINTER(rt_group, n2.group);
 
     // add all actions from rt1 into end of rt2
-    rt2->actions.insert(rt2->actions.cend(), rt1->actions.cbegin(), rt1->actions.cend());
+    rt2->actions.insert(rt2->actions.end(), rt1->actions.begin(), rt1->actions.end());
 
     // just release rt1's snapshot
     db_->ReleaseSnapshot((const rocksdb::Snapshot*)rt1->rb_snapshot);
